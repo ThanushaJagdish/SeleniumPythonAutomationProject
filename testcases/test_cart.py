@@ -17,7 +17,7 @@ def test_add_item_to_cart(search_product):
     cart_pg.click_cart()
     assert 'iphone 13 pro' in cart_pg.get_cart_items_names()
 
-def test_remove_item_to_cart(search_product):
+def test_remove_item_from_cart(search_product):
     driver = search_product
     search_pg = SearchPage(driver)
     cart_pg = CartPage(driver)

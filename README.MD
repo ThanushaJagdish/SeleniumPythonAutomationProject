@@ -113,8 +113,6 @@ run.bat
 This will:
 - Execute all testcases
 - Generate Allure Report
-- Create timestamped report
-- Open report automatically
 
 ---
 

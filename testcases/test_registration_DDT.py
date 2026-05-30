@@ -8,7 +8,7 @@ path = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "testdata",
 
 @pytest.mark.parametrize('registration_data',read_excel_data(path,"Sheet1"))
 def test_user_registration(setup,registration_data):
-    data = registration_data
+    data = registration_data #excel data row as tuple
     driver = setup
     reg_page = RegistrationPage(driver)
     login_pg = LoginPage(driver)
@@ -22,6 +22,10 @@ def test_user_registration(setup,registration_data):
     reg_page.choose_gender(data[5])
     reg_page.enter_password(data[6])
     reg_page.confirm_password(data[7])
+    expected_result = data[8]
     reg_page.check_age_greater_than_18()
     reg_page.click_register()
-    assert reg_page.registration_successful()
+    if expected_result=='pass':
+        assert reg_page.registration_successful()
+    else:
+        assert not reg_page.registration_successful()

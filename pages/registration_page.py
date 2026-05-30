@@ -56,7 +56,11 @@ class RegistrationPage(BasePage):
         self.safe_click(self.register_button)
 
     def registration_successful(self):
-        return self.wait_for_element_to_be_visible(self.registered_successfully_msg).is_displayed()
+        try:
+            reg_successful_msg = self.wait_for_element_to_be_visible(self.registered_successfully_msg)
+            return reg_successful_msg.is_displayed()
+        except:
+            return False
 
 
 
